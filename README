@@ -1,0 +1,63 @@
+DromeAudio 0.1.2
+(Last updated: December 30, 2008)
+
+ABOUT
+-----
+DromeAudio is a small audio manipulation and playback library that's
+written in C++. It features a simple API for loading, generating,
+processing, and playing audio.
+
+DromeAudio was written by Josh Beam <josh@joshbeam.com> and is distributed
+under a BSD-style license. The latest version can be found at:
+
+	http://www.3ddrome.com/software/dromeaudio.php
+
+There is NO WARRANTY for this software. See the 'COPYING' file
+included with DromeAudio for more information.
+
+FEATURES
+--------
+Some of DromeAudio's features include:
+
+	- Loading and saving WAV sounds
+	- Loading Ogg Vorbis sounds
+	- Audio mixing and playback
+	- Dynamic audio processing effects, including pitch shifting, oscillator,
+	  and echo effects
+	- Smart pointers with reference counting so that unused sounds are
+	  automatically removed from memory
+
+PLATFORMS
+---------
+DromeAudio has been successfully tested and used on the following
+operating systems / hardware architectures:
+
+	- Arch Linux / x86
+	- Windows XP x64 / x86-64
+
+REQUIREMENTS
+------------
+DromeAudio uses the CMake build system, which can be found at:
+
+	http://www.cmake.org/
+
+DromeAudio can be used with the following optional libraries for
+certain functionality:
+
+	- vorbisfile (for Ogg Vorbis sound loading) - http://www.xiph.org/
+	- SDL (for audio playback) - http://www.libsdl.org/
+	- alsa-lib (for audio playback) - http://www.alsa-project.org/
+
+INSTALLATION
+------------
+DromeAudio should be built in a directory separate from its source
+code. It can be built and installed by running the following commands
+from the root source directory:
+
+	mkdir build; cd build
+	cmake .. && make && make install
+
+USAGE
+-----
+See the 'examples' directory included with DromeAudio for sample
+code using the library.
