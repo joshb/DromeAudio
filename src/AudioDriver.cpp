@@ -42,6 +42,8 @@ namespace DromeAudio {
  */
 AudioDriver::AudioDriver()
 {
+	m_mutex = Mutex::create();
+
 	m_sampleRate = 0;
 	m_outputSampleIndex = 0;
 }
@@ -50,9 +52,54 @@ AudioDriver::~AudioDriver()
 {
 }
 
+unsigned int
+AudioDriver::getSampleRate() const
+{
+	return m_sampleRate;
+}
+
+SoundPtr
+AudioDriver::getOutputSound() const
+{
+	m_mutex->lock();
+	SoundPtr sound = m_outputSound;
+	m_mutex->unlock();
+
+	return sound;
+}
+
+void
+AudioDriver::setOutputSound(SoundPtr value)
+{
+	m_mutex->lock();
+	m_outputSound = value;
+	m_outputSampleIndex = 0;
+	m_mutex->unlock();
+}
+
+unsigned int
+AudioDriver::getOutputSampleIndex() const
+{
+	m_mutex->lock();
+	unsigned int index = m_outputSampleIndex;
+	m_mutex->unlock();
+
+	return index;
+}
+
+void
+AudioDriver::setOutputSampleIndex(unsigned int value)
+{
+	m_mutex->lock();
+	m_outputSampleIndex = value;
+	m_mutex->unlock();
+}
+
 void
 AudioDriver::writeSamples(unsigned int numSamples)
 {
+	m_mutex->lock();
+
 	// if there's no sound, just write default sample data
 	if(!m_outputSound) {
 		for(unsigned int i = 0; i < numSamples; ++i)
@@ -63,6 +110,8 @@ AudioDriver::writeSamples(unsigned int numSamples)
 	// write samples from output sound
 	for(unsigned int i = 0; i < numSamples; ++i)
 		writeSample(m_outputSound->getSample(m_outputSampleIndex++, getSampleRate()));
+
+	m_mutex->unlock();
 }
 
 AudioDriver *

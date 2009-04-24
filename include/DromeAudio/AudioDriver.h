@@ -28,6 +28,7 @@
 
 #include <vector>
 #include <DromeAudio/Endian.h>
+#include <DromeAudio/Mutex.h>
 #include <DromeAudio/Sound.h>
 
 namespace DromeAudio {
@@ -48,6 +49,7 @@ class AudioDriver
 		};
 
 	protected:
+		Mutex *m_mutex;
 		unsigned int m_sampleRate;
 		SoundPtr m_outputSound;
 		unsigned int m_outputSampleIndex;
@@ -77,29 +79,29 @@ class AudioDriver
 		/**
 		 * @return The sample rate at which audio should be written to the driver.
 		 */
-		unsigned int getSampleRate() const { return m_sampleRate; }
+		unsigned int getSampleRate() const;
 
 		/**
 		 * @return SoundPtr to the Sound being used for audio output.
 		 */
-		SoundPtr getOutputSound() const { return m_outputSound; }
+		SoundPtr getOutputSound() const;
 
 		/**
 		 * Sets the output Sound associated with the driver. If not NULL, the driver will play samples from the sound as audio output.
 		 * @param value SoundPtr to the Sound to use for audio output.
 		 */
-		void setOutputSound(SoundPtr value) { m_outputSound = value; m_outputSampleIndex = 0; }
+		void setOutputSound(SoundPtr value);
 
 		/**
 		 * @return The current sample index of the output sound.
 		 */
-		unsigned int getOutputSampleIndex() const { return m_outputSampleIndex; }
+		unsigned int getOutputSampleIndex() const;
 
 		/**
 		 * Sets the sample index of the output sound.
 		 * @param value New sample index.
 		 */
-		void setOutputSampleIndex(unsigned int value) { m_outputSampleIndex = value; }
+		void setOutputSampleIndex(unsigned int value);
 
 		/**
 		 * @return Name of the driver, such as "AudioDriverALSA".
