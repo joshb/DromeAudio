@@ -104,12 +104,11 @@ AudioDriver::writeSamples(unsigned int numSamples)
 	if(!m_outputSound) {
 		for(unsigned int i = 0; i < numSamples; ++i)
 			writeSample(Sample());
-		return;
+	} else {
+		// write samples from output sound
+		for(unsigned int i = 0; i < numSamples; ++i)
+			writeSample(m_outputSound->getSample(m_outputSampleIndex++, getSampleRate()));
 	}
-
-	// write samples from output sound
-	for(unsigned int i = 0; i < numSamples; ++i)
-		writeSample(m_outputSound->getSample(m_outputSampleIndex++, getSampleRate()));
 
 	m_mutex->unlock();
 }
