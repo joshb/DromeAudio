@@ -136,7 +136,7 @@ Sound::create(const char *filename)
 	while(tmp != filename && *tmp != '.')
 		--tmp;
 	if(tmp == filename)
-		throw Exception("Sound::New(): filename has no extension");
+		throw Exception("Sound::create(): filename has no extension");
 
 	// create sound based on extension
 #ifdef WITH_VORBIS
@@ -146,7 +146,7 @@ Sound::create(const char *filename)
 	if(strCaseCmp(tmp, ".wav") == 0)
 		return WavSound::create(filename);
 
-	throw Exception("Sound::New(): Unsupported file extension (%s)", tmp);
+	throw Exception("Sound::create(): Unsupported file extension (%s)", tmp);
 	return NULL;
 }
 
