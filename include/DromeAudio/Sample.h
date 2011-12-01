@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008-2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,37 +41,36 @@ class Sample
 
 	public:
 		Sample();
-		Sample(float values[], unsigned int numChannels);
 
 		/**
 		 * @param index Must be 0 (left channel) or 1 (right channel).
 		 * @return Value of the channel at the given index.
 		 */
-		float &operator [] (int index) { return m_channelValues[index]; }
+		float &operator [] (int index);
 
 		/**
 		 * @param index Must be 0 (left channel) or 1 (right channel).
 		 * @return Value of the channel at the given index.
 		 */
-		const float &operator [] (int index) const { return m_channelValues[index]; }
+		const float &operator [] (int index) const;
 
 		Sample operator + (const Sample &s) const;
-		void operator += (const Sample &s) { *this = *this + s; }
+		void operator += (const Sample &s);
 
 		Sample operator - (const Sample &s) const;
-		void operator -= (const Sample &s) { *this = *this - s; }
+		void operator -= (const Sample &s);
 
 		Sample operator * (const Sample &s) const;
-		void operator *= (const Sample &s) { *this = *this * s; }
+		void operator *= (const Sample &s);
 
 		Sample operator * (float  f) const;
-		void operator *= (float f) { *this = *this * f; }
+		void operator *= (float f);
 
 		Sample operator / (const Sample &s) const;
-		void operator /= (const Sample &s) { *this = *this / s; }
+		void operator /= (const Sample &s);
 
 		Sample operator / (float f) const;
-		void operator /= (float f) { *this = *this / f; }
+		void operator /= (float f);
 
 		/**
 		 * Clamps the sample's channel values to a range of [-1, 1], where -1 represents the lowest possible channel value and 1 represents the highest.
@@ -83,12 +82,13 @@ class Sample
 		 * Changes the sample's stereo balance, with a value of -1 moving the sample completely to the left channel, 0 being normal, and 1 moving the sample completely to the right channel.
 		 * @return Balanced Sample.
 		 */
-		Sample balance(float balance) const;
+		Sample balance(float amount) const;
 
 		/**
-		 * @return Sample created from an array of floats.
+		 * Takes the average of each channel of the sample to generate a mono sample.
+		 * @return Mono Sample.
 		 */
-		static Sample fromFloat(const float values[], unsigned int numChannels);
+		Sample toMono() const;
 
 		/**
 		 * @return Sample created from an array of 8-bit integers.

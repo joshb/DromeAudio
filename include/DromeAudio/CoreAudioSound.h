@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 Josh A. Beam
+ * Copyright (C) 2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,19 +23,19 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_WAVSOUND_H__
-#define __DROMEAUDIO_WAVSOUND_H__
+#ifndef __DROMEAUDIO_COREAUDIOSOUND_H__
+#define __DROMEAUDIO_COREAUDIOSOUND_H__
 
 #include <DromeAudio/Sound.h>
 
 namespace DromeAudio {
 
-class WavSound;
-typedef RefPtr <WavSound> WavSoundPtr;
+class CoreAudioSound;
+typedef RefPtr <CoreAudioSound> CoreAudioSoundPtr;
 
-/** \brief A class for loading uncompressed PCM WAV files.
+/** \brief A class for loading audio files using Core Audio on Mac OS X.
  */
-class WavSound : public Sound
+class CoreAudioSound : public Sound
 {
 	protected:
 		unsigned char m_numChannels;
@@ -43,11 +43,10 @@ class WavSound : public Sound
 		unsigned int m_sampleRate;
 		unsigned int m_numSamples;
 
-		uint32_t m_dataSize;
-		uint8_t *m_data;
+		Sample *m_samples;
 
-		WavSound(const char *filename);
-		virtual ~WavSound();
+		CoreAudioSound(const char *filename);
+		virtual ~CoreAudioSound();
 
 	public:
 		unsigned char getNumChannels() const;
@@ -57,13 +56,13 @@ class WavSound : public Sound
 		Sample getSample(unsigned int index) const;
 
 		/**
-		 * Loads a WAV file.
-		 * @param filename Path to the WAV file to load.
+		 * Loads an audio file using Core Audio.
+		 * @param filename Path to the audio file to load.
 		 * @return SoundPtr to the loaded sound.
 		 */
-		static WavSoundPtr create(const char *filename);
+		static CoreAudioSoundPtr create(const char *filename);
 };
 
 } // namespace DromeAudio
 
-#endif /* __DROMEAUDIO_WAVSOUND_H__ */
+#endif /* __DROMEAUDIO_COREAUDIOSOUND_H__ */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008-2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@ class SoundEffect : public Sound
 		virtual unsigned int getSampleRate() const;
 		virtual unsigned int getNumSamples() const;
 
-		SoundPtr getSound() const { return m_sound; }
-		virtual void setSound(SoundPtr value) { m_sound = value; }
+		SoundPtr getSound() const;
+		virtual void setSound(SoundPtr value);
 
 		virtual Sample getSample(unsigned int index) const = 0;
 };
@@ -73,14 +73,8 @@ class PitchShiftSoundEffect : public SoundEffect
 	public:
 		unsigned int getNumSamples() const;
 
-		float getFactor() const { return m_factor; }
-		void setFactor(float value)
-		{
-			if(value <= 0.0f)
-				throw Exception("PitchShiftSoundEffect::SetFactor(): Invalid factor value (%f)", value);
-
-			m_factor = value;
-		}
+		float getFactor() const;
+		void setFactor(float value);
 
 		Sample getSample(unsigned int index) const;
 
@@ -101,18 +95,12 @@ class OscillatorSoundEffect : public SoundEffect
 		OscillatorSoundEffect(SoundPtr sound, float frequency);
 
 	public:
-		float getFrequency() const { return m_frequency; }
-		void setFrequency(float value)
-		{
-			if(value < 0.0f)
-				m_frequency = 0.0f;
-			else
-				m_frequency = value;
-		}
+		float getFrequency() const;
+		void setFrequency(float value);
 
 		Sample getSample(unsigned int index) const;
 
-		OscillatorSoundEffectPtr create(SoundPtr sound, float frequency);
+		static OscillatorSoundEffectPtr create(SoundPtr sound, float frequency);
 };
 
 /*
@@ -133,14 +121,14 @@ class EchoSoundEffect : public SoundEffect
 	public:
 		unsigned int getNumSamples() const;
 
-		float getDelay() const { return m_delay; }
-		void setDelay(float value) { m_delay = value; }
+		float getDelay() const;
+		void setDelay(float value);
 
-		float getFactor() const { return m_factor; }
-		void setFactor(float value) { m_factor = value; }
+		float getFactor() const;
+		void setFactor(float value);
 
-		unsigned int getCount() const { return m_count; }
-		void setCount(unsigned int value) { m_count = value; }
+		unsigned int getCount() const;
+		void setCount(unsigned int value);
 
 		Sample getSample(unsigned int index) const;
 

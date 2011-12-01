@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008-2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,12 +67,10 @@ class Sound : public RefClass
 
 		/**
 		 * Retrieves one sample of audio data from the sound.
-		 * @param index The index of the Sample to retrieve. Should be less than the value returned by GetNumSamples() (if GetNumSamples() does not equal 0).
-		 * @param targetRate The target sample rate that the given index should be mapped from.
+		 * @param index The index of the Sample to retrieve. Should be less than the value returned by getNumSamples() (if getNumSamples() does not equal 0).
 		 * @return The Sample at the specified index.
 		 */
 		virtual Sample getSample(unsigned int index) const = 0;
-		Sample getSample(unsigned int index, unsigned int targetRate) const;
 
 		/**
 		 * Saves the sound to a WAV file.

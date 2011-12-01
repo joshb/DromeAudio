@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008-2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,9 +50,9 @@ class VorbisSound : public Sound
 		virtual ~VorbisSound();
 
 	public:
-		unsigned char getNumChannels() const { return m_numChannels; }
-		unsigned int getSampleRate() const { return m_sampleRate; }
-		unsigned int getNumSamples() const { return m_numSamples; }
+		unsigned char getNumChannels() const;
+		unsigned int getSampleRate() const;
+		unsigned int getNumSamples() const;
 
 		Sample getSample(unsigned int index) const;
 

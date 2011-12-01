@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,7 @@
 
 namespace DromeAudio {
 
-unsigned int randomUInt();
-float randomFloat(float min, float max);
-int strCaseCmp(const char *s1, const char *s2);
+int StrCaseCmp(const char *s1, const char *s2);
 
 } // namespace DromeAudio
 

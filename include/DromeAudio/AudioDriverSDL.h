@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008-2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,6 @@ class AudioDriverSDL : public AudioDriver
 		const char *getDriverName() const;
 
 		void writeSample(const Sample &sample);
-		Sample readSample();
 
 		void sdlCallback(uint8_t *stream, int length);
 };

@@ -1,5 +1,5 @@
-DromeAudio 0.1.2
-(Last updated: December 30, 2008)
+DromeAudio 0.2.1
+(Last updated: November 14, 2010)
 
 ABOUT
 -----
@@ -10,7 +10,7 @@ processing, and playing audio.
 DromeAudio was written by Josh Beam <josh@joshbeam.com> and is distributed
 under a BSD-style license. The latest version can be found at:
 
-	http://www.3ddrome.com/software/dromeaudio.php
+	http://joshbeam.com/software/dromeaudio/
 
 There is NO WARRANTY for this software. See the 'COPYING' file
 included with DromeAudio for more information.
@@ -33,7 +33,7 @@ DromeAudio has been successfully tested and used on the following
 operating systems / hardware architectures:
 
 	- Arch Linux / x86
-	- Windows XP x64 / x86-64
+	- Mac OS X 10.6 / x86-64
 
 REQUIREMENTS
 ------------

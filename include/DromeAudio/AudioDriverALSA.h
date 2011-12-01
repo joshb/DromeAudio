@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008-2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,6 @@
 #ifndef __DROMEAUDIO_AUDIODRIVERALSA_H__
 #define __DROMEAUDIO_AUDIODRIVERALSA_H__
 
-#include <pthread.h>
-#include <alsa/asoundlib.h>
 #include <DromeAudio/AudioDriver.h>
 
 namespace DromeAudio {
@@ -35,24 +33,22 @@ namespace DromeAudio {
 class AudioDriverALSA : public AudioDriver
 {
 	protected:
-		snd_pcm_t *m_inHandle;
-		snd_pcm_t *m_outHandle;
+		void *m_handle;
+		void *m_asyncHandler;
 
-		bool m_running;
-		pthread_t m_thread;
-
-		snd_pcm_t *pcmOpen(snd_pcm_stream_t stream);
+		float *m_data;
+		unsigned int m_sampleIndex;
+		unsigned int m_numSamples;
 
 	public:
-		AudioDriverALSA(Mode mode);
+		AudioDriverALSA();
 		virtual ~AudioDriverALSA();
 
 		const char *getDriverName() const;
 
 		void writeSample(const Sample &sample);
-		Sample readSample();
 
-		void run();
+		void alsaCallback();
 };
 
 } // namespace DromeAudio

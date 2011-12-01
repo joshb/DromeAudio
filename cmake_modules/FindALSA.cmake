@@ -1,5 +1,5 @@
 if(WIN32)
-	set(ALSA_FOUND "NO")
+	set(ALSAFOUND "NO")
 else(WIN32)
 	find_path(
 		ALSA_INCLUDE_DIR

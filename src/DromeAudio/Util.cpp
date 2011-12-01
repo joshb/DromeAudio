@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 Josh A. Beam
+ * Copyright (C) 2008 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,47 +23,24 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_WAVSOUND_H__
-#define __DROMEAUDIO_WAVSOUND_H__
-
-#include <DromeAudio/Sound.h>
+#include <cstring>
+#ifdef _WIN32
+	#include <windows.h>
+#else
+	#include <unistd.h>
+#endif /* _WIN32 */
+#include <DromeAudio/Util.h>
 
 namespace DromeAudio {
 
-class WavSound;
-typedef RefPtr <WavSound> WavSoundPtr;
-
-/** \brief A class for loading uncompressed PCM WAV files.
- */
-class WavSound : public Sound
+int
+StrCaseCmp(const char *s1, const char *s2)
 {
-	protected:
-		unsigned char m_numChannels;
-		unsigned char m_bytesPerSample;
-		unsigned int m_sampleRate;
-		unsigned int m_numSamples;
-
-		uint32_t m_dataSize;
-		uint8_t *m_data;
-
-		WavSound(const char *filename);
-		virtual ~WavSound();
-
-	public:
-		unsigned char getNumChannels() const;
-		unsigned int getSampleRate() const;
-		unsigned int getNumSamples() const;
-
-		Sample getSample(unsigned int index) const;
-
-		/**
-		 * Loads a WAV file.
-		 * @param filename Path to the WAV file to load.
-		 * @return SoundPtr to the loaded sound.
-		 */
-		static WavSoundPtr create(const char *filename);
-};
+#ifdef _WIN32
+	return strcmpi(s1, s2);
+#else
+	return strcasecmp(s1, s2);
+#endif /* _WIN32 */
+}
 
 } // namespace DromeAudio
-
-#endif /* __DROMEAUDIO_WAVSOUND_H__ */

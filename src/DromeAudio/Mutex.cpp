@@ -23,47 +23,85 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_WAVSOUND_H__
-#define __DROMEAUDIO_WAVSOUND_H__
-
-#include <DromeAudio/Sound.h>
+#include <cstring>
+#ifdef _WIN32
+	#include <windows.h>
+#else
+	#include <pthread.h>
+#endif /* _WIN32 */
+#include <DromeAudio/Exception.h>
+#include <DromeAudio/Mutex.h>
 
 namespace DromeAudio {
 
-class WavSound;
-typedef RefPtr <WavSound> WavSoundPtr;
-
-/** \brief A class for loading uncompressed PCM WAV files.
- */
-class WavSound : public Sound
+#ifndef _WIN32
+class PThreadMutex : public Mutex
 {
 	protected:
-		unsigned char m_numChannels;
-		unsigned char m_bytesPerSample;
-		unsigned int m_sampleRate;
-		unsigned int m_numSamples;
-
-		uint32_t m_dataSize;
-		uint8_t *m_data;
-
-		WavSound(const char *filename);
-		virtual ~WavSound();
+		pthread_mutex_t m_mutex;
 
 	public:
-		unsigned char getNumChannels() const;
-		unsigned int getSampleRate() const;
-		unsigned int getNumSamples() const;
+		PThreadMutex()
+		{
+			if(pthread_mutex_init(&m_mutex, NULL) != 0)
+				throw Exception("PThreadMutex::PThreadMutex(): pthread_mutex_init failed");
+		}
 
-		Sample getSample(unsigned int index) const;
+		~PThreadMutex()
+		{
+			if(pthread_mutex_destroy(&m_mutex) != 0)
+				throw Exception("PThreadMutex::~PThreadMutex(): pthread_mutex_destroy failed");
+		}
 
-		/**
-		 * Loads a WAV file.
-		 * @param filename Path to the WAV file to load.
-		 * @return SoundPtr to the loaded sound.
-		 */
-		static WavSoundPtr create(const char *filename);
+		void lock()
+		{
+			pthread_mutex_lock(&m_mutex);
+		}
+
+		void unlock()
+		{
+			pthread_mutex_unlock(&m_mutex);
+		}
 };
+#endif
+
+#ifdef _WIN32
+class WinMutex : public Mutex
+{
+	protected:
+		HANDLE m_mutex;
+
+	public:
+		WinMutex()
+		{
+			m_mutex = CreateMutex(NULL, false, NULL);
+		}
+
+		~WinMutex()
+		{
+			CloseHandle(m_Mutex);
+		}
+
+		void lock()
+		{
+			WaitForSingleObject(m_Mutex, INFINITE);
+		}
+
+		void unlock()
+		{
+			ReleaseMutex(m_Mutex);
+		}
+};
+#endif
+
+Mutex *
+Mutex::create()
+{
+#if _WIN32
+	return new WinMutex();
+#else
+	return new PThreadMutex();
+#endif /* _WIN32 */
+}
 
 } // namespace DromeAudio
-
-#endif /* __DROMEAUDIO_WAVSOUND_H__ */

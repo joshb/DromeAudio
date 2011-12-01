@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008-2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,11 @@
 
 #include <vector>
 #include <DromeAudio/Endian.h>
-#include <DromeAudio/Mutex.h>
-#include <DromeAudio/Sound.h>
+#include <DromeAudio/Sample.h>
 
 namespace DromeAudio {
+
+class AudioContext;
 
 /** \brief The abstract class for accessing audio interfaces.
  */
@@ -41,36 +42,9 @@ class AudioDriver
 	 * \example DromeAudioPlayer.cpp
 	 */
 
-	public:
-		enum Mode {
-			MODE_WRITE_ONLY = 0,
-			MODE_READ_ONLY,
-			MODE_READ_WRITE
-		};
-
 	protected:
-		Mutex *m_mutex;
 		unsigned int m_sampleRate;
-		SoundPtr m_outputSound;
-		unsigned int m_outputSampleIndex;
-
-		/**
-		 * Writes an audio sample to be played.
-		 * @param sample Sample object.
-		 */
-		virtual void writeSample(const Sample &sample) = 0;
-
-		/**
-		 * Reads an audio sample to be recorded.
-		 * @return Sample object.
-		 */
-		virtual Sample readSample() = 0;
-
-		/**
-		 * Writes samples from the output Sound.
-		 * @numSamples Number of samples to write.
-		 */
-		void writeSamples(unsigned int numSamples);
+		AudioContext *m_audioContext;
 
 	public:
 		AudioDriver();
@@ -82,26 +56,15 @@ class AudioDriver
 		unsigned int getSampleRate() const;
 
 		/**
-		 * @return SoundPtr to the Sound being used for audio output.
+		 * @return Pointer to the AudioContext associated with the driver.
 		 */
-		SoundPtr getOutputSound() const;
+		AudioContext *getAudioContext() const;
 
 		/**
-		 * Sets the output Sound associated with the driver. If not NULL, the driver will play samples from the sound as audio output.
-		 * @param value SoundPtr to the Sound to use for audio output.
+		 * Sets the AudioContext associated with the driver. If not NULL, the driver will asynchronously call the AudioContext::writeSamples() function of the given AudioContext to write sample data when necessary.
+		 * @param value Pointer to the AudioContext to associate with the driver.
 		 */
-		void setOutputSound(SoundPtr value);
-
-		/**
-		 * @return The current sample index of the output sound.
-		 */
-		unsigned int getOutputSampleIndex() const;
-
-		/**
-		 * Sets the sample index of the output sound.
-		 * @param value New sample index.
-		 */
-		void setOutputSampleIndex(unsigned int value);
+		void setAudioContext(AudioContext *value);
 
 		/**
 		 * @return Name of the driver, such as "AudioDriverALSA".
@@ -109,10 +72,16 @@ class AudioDriver
 		virtual const char *getDriverName() const = 0;
 
 		/**
+		 * Writes an audio sample to be played.
+		 * @param sample Sample object.
+		 */
+		virtual void writeSample(const Sample &sample) = 0;
+
+		/**
 		 * Creates a new AudioDriver using the most appropriate derived class available.
 		 * @return Pointer to new AudioDriver object.
 		 */
-		static AudioDriver *create(Mode mode = MODE_WRITE_ONLY);
+		static AudioDriver *create();
 };
 
 }

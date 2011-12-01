@@ -23,47 +23,61 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_WAVSOUND_H__
-#define __DROMEAUDIO_WAVSOUND_H__
-
-#include <DromeAudio/Sound.h>
+#include <DromeAudio/Exception.h>
+#include <DromeAudio/AudioDriver.h>
+#ifdef WITH_ALSA
+	#include <DromeAudio/AudioDriverALSA.h>
+#elif WITH_OSX
+	#include <DromeAudio/AudioDriverOSX.h>
+#elif WITH_SDL
+	#include <DromeAudio/AudioDriverSDL.h>
+#endif
 
 namespace DromeAudio {
 
-class WavSound;
-typedef RefPtr <WavSound> WavSoundPtr;
-
-/** \brief A class for loading uncompressed PCM WAV files.
+/*
+ * AudioDriver class
  */
-class WavSound : public Sound
+AudioDriver::AudioDriver()
 {
-	protected:
-		unsigned char m_numChannels;
-		unsigned char m_bytesPerSample;
-		unsigned int m_sampleRate;
-		unsigned int m_numSamples;
+	m_sampleRate = 0;
+	m_audioContext = 0;
+}
 
-		uint32_t m_dataSize;
-		uint8_t *m_data;
+AudioDriver::~AudioDriver()
+{
+}
 
-		WavSound(const char *filename);
-		virtual ~WavSound();
+unsigned int
+AudioDriver::getSampleRate() const
+{
+	return m_sampleRate;
+}
 
-	public:
-		unsigned char getNumChannels() const;
-		unsigned int getSampleRate() const;
-		unsigned int getNumSamples() const;
+AudioContext *
+AudioDriver::getAudioContext() const
+{
+	return m_audioContext;
+}
 
-		Sample getSample(unsigned int index) const;
+void
+AudioDriver::setAudioContext(AudioContext *value)
+{
+	m_audioContext = value;
+}
 
-		/**
-		 * Loads a WAV file.
-		 * @param filename Path to the WAV file to load.
-		 * @return SoundPtr to the loaded sound.
-		 */
-		static WavSoundPtr create(const char *filename);
-};
+AudioDriver *
+AudioDriver::create()
+{
+#ifdef WITH_ALSA
+	return new AudioDriverALSA();
+#elif WITH_OSX
+	return new AudioDriverOSX();
+#elif WITH_SDL
+	return new AudioDriverSDL();
+#else
+	throw Exception("AudioDriver::create(): No suitable driver available");
+#endif
+}
 
 } // namespace DromeAudio
-
-#endif /* __DROMEAUDIO_WAVSOUND_H__ */

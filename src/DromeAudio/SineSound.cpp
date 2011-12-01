@@ -23,47 +23,65 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_WAVSOUND_H__
-#define __DROMEAUDIO_WAVSOUND_H__
-
-#include <DromeAudio/Sound.h>
+#include <cmath>
+#include <DromeAudio/SineSound.h>
 
 namespace DromeAudio {
 
-class WavSound;
-typedef RefPtr <WavSound> WavSoundPtr;
-
-/** \brief A class for loading uncompressed PCM WAV files.
+/*
+ * SineSound class
  */
-class WavSound : public Sound
+SineSound::SineSound(float frequency)
 {
-	protected:
-		unsigned char m_numChannels;
-		unsigned char m_bytesPerSample;
-		unsigned int m_sampleRate;
-		unsigned int m_numSamples;
+	setFrequency(frequency);
+}
 
-		uint32_t m_dataSize;
-		uint8_t *m_data;
+unsigned char
+SineSound::getNumChannels() const
+{
+	return 1;
+}
 
-		WavSound(const char *filename);
-		virtual ~WavSound();
+unsigned int
+SineSound::getSampleRate() const
+{
+	return 44100;
+}
 
-	public:
-		unsigned char getNumChannels() const;
-		unsigned int getSampleRate() const;
-		unsigned int getNumSamples() const;
+unsigned int
+SineSound::getNumSamples() const
+{
+	return (unsigned int)((float)getSampleRate() / m_frequency);
+}
 
-		Sample getSample(unsigned int index) const;
+float
+SineSound::getFrequency() const
+{
+	return m_frequency;
+}
 
-		/**
-		 * Loads a WAV file.
-		 * @param filename Path to the WAV file to load.
-		 * @return SoundPtr to the loaded sound.
-		 */
-		static WavSoundPtr create(const char *filename);
-};
+void
+SineSound::setFrequency(float value)
+{
+	m_frequency = value;
+}
+
+Sample
+SineSound::getSample(unsigned int index) const
+{
+	float f = sinf(M_PI * 2.0f * ((float)index / (float)getNumSamples()));
+
+	Sample sample;
+	sample[0] = f;
+	sample[1] = f;
+
+	return sample;
+}
+
+SineSoundPtr
+SineSound::create(float frequency)
+{
+	return SineSoundPtr(new SineSound(frequency));
+}
 
 } // namespace DromeAudio
-
-#endif /* __DROMEAUDIO_WAVSOUND_H__ */

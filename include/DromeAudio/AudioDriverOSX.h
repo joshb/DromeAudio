@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 Josh A. Beam
+ * Copyright (C) 2010 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,47 +23,38 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_WAVSOUND_H__
-#define __DROMEAUDIO_WAVSOUND_H__
+#ifndef __DROMEAUDIO_AUDIODRIVEROSX_H__
+#define __DROMEAUDIO_AUDIODRIVEROSX_H__
 
-#include <DromeAudio/Sound.h>
+#include <DromeAudio/AudioDriver.h>
+#include <AudioUnit/AudioUnit.h>
+#include <pthread.h>
 
 namespace DromeAudio {
 
-class WavSound;
-typedef RefPtr <WavSound> WavSoundPtr;
-
-/** \brief A class for loading uncompressed PCM WAV files.
- */
-class WavSound : public Sound
+class AudioDriverOSX : public AudioDriver
 {
 	protected:
-		unsigned char m_numChannels;
-		unsigned char m_bytesPerSample;
-		unsigned int m_sampleRate;
+		AudioUnit m_outputUnit;
+		pthread_t m_thread;
+		bool m_running;
+
+		float *m_data[2];
+		unsigned int m_sampleIndex;
 		unsigned int m_numSamples;
 
-		uint32_t m_dataSize;
-		uint8_t *m_data;
-
-		WavSound(const char *filename);
-		virtual ~WavSound();
-
 	public:
-		unsigned char getNumChannels() const;
-		unsigned int getSampleRate() const;
-		unsigned int getNumSamples() const;
+		AudioDriverOSX();
+		virtual ~AudioDriverOSX();
 
-		Sample getSample(unsigned int index) const;
+		const char *getDriverName() const;
 
-		/**
-		 * Loads a WAV file.
-		 * @param filename Path to the WAV file to load.
-		 * @return SoundPtr to the loaded sound.
-		 */
-		static WavSoundPtr create(const char *filename);
+		void writeSample(const Sample &sample);
+
+		void runLoop();
+		void renderCallback(AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData);
 };
 
 } // namespace DromeAudio
 
-#endif /* __DROMEAUDIO_WAVSOUND_H__ */
+#endif /* __DROMEAUDIO_AUDIODRIVEROSX_H__ */

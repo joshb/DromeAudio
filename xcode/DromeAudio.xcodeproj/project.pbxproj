@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D14CC5F128A2B55008589FB /* AudioContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC4D128A2B55008589FB /* AudioContext.cpp */; };
+		0D14CC60128A2B55008589FB /* AudioDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC4E128A2B55008589FB /* AudioDriver.cpp */; };
+		0D14CC62128A2B55008589FB /* AudioDriverOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC50128A2B55008589FB /* AudioDriverOSX.cpp */; };
+		0D14CC64128A2B55008589FB /* Endian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC53128A2B55008589FB /* Endian.cpp */; };
+		0D14CC65128A2B55008589FB /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC54128A2B55008589FB /* Mutex.cpp */; };
+		0D14CC66128A2B55008589FB /* Sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC55128A2B55008589FB /* Sample.cpp */; };
+		0D14CC67128A2B55008589FB /* SineSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC56128A2B55008589FB /* SineSound.cpp */; };
+		0D14CC68128A2B55008589FB /* Sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC57128A2B55008589FB /* Sound.cpp */; };
+		0D14CC69128A2B55008589FB /* SoundEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC58128A2B55008589FB /* SoundEffect.cpp */; };
+		0D14CC6A128A2B55008589FB /* SoundEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC59128A2B55008589FB /* SoundEmitter.cpp */; };
+		0D14CC6C128A2B55008589FB /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC5B128A2B55008589FB /* Util.cpp */; };
+		0D14CC6E128A2B55008589FB /* Wav.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D14CC5D128A2B55008589FB /* Wav.h */; };
+		0D14CC6F128A2B55008589FB /* WavSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC5E128A2B55008589FB /* WavSound.cpp */; };
+		0D14CC84128A2C36008589FB /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D14CC83128A2C36008589FB /* CoreAudio.framework */; };
+		0D14CC88128A2C3D008589FB /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D14CC87128A2C3D008589FB /* AudioUnit.framework */; };
+		0D14CE5B128F3C78008589FB /* CoreAudioSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CE5A128F3C78008589FB /* CoreAudioSound.cpp */; };
+		0D14CE61128F3C9A008589FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D14CE60128F3C9A008589FB /* AudioToolbox.framework */; };
+		0D14CEA3128F3E31008589FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CCBD128A2D6A008589FB /* main.m */; };
+		0D14CEA4128F3E3C008589FB /* DromeAudioPlayerCocoaAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CCB8128A2D6A008589FB /* DromeAudioPlayerCocoaAppDelegate.mm */; };
+		0D14CEA5128F3E4E008589FB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D14CCBB128A2D6A008589FB /* MainMenu.xib */; };
+		0D14CEA6128F3E52008589FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D14CCB9128A2D6A008589FB /* InfoPlist.strings */; };
+		0D14CEA7128F3E5F008589FB /* DromeAudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC0C705546C1D00DB518D /* DromeAudio.dylib */; };
+		D2AAC0CC05546C4400DB518D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		0D14CC37128A2B3E008589FB /* AudioContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioContext.h; sourceTree = "<group>"; };
+		0D14CC38128A2B3E008589FB /* AudioDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDriver.h; sourceTree = "<group>"; };
+		0D14CC3A128A2B3E008589FB /* AudioDriverOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDriverOSX.h; sourceTree = "<group>"; };
+		0D14CC3C128A2B3E008589FB /* DromeAudio */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DromeAudio; sourceTree = "<group>"; };
+		0D14CC3D128A2B3E008589FB /* Endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Endian.h; sourceTree = "<group>"; };
+		0D14CC3E128A2B3E008589FB /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		0D14CC3F128A2B3E008589FB /* Mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mutex.h; sourceTree = "<group>"; };
+		0D14CC40128A2B3E008589FB /* Ref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ref.h; sourceTree = "<group>"; };
+		0D14CC41128A2B3E008589FB /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
+		0D14CC42128A2B3E008589FB /* SineSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SineSound.h; sourceTree = "<group>"; };
+		0D14CC43128A2B3E008589FB /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		0D14CC44128A2B3E008589FB /* SoundEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEffect.h; sourceTree = "<group>"; };
+		0D14CC45128A2B3E008589FB /* SoundEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEmitter.h; sourceTree = "<group>"; };
+		0D14CC47128A2B3E008589FB /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		0D14CC48128A2B3E008589FB /* VorbisSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VorbisSound.h; sourceTree = "<group>"; };
+		0D14CC49128A2B3E008589FB /* WavSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WavSound.h; sourceTree = "<group>"; };
+		0D14CC4D128A2B55008589FB /* AudioContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioContext.cpp; sourceTree = "<group>"; };
+		0D14CC4E128A2B55008589FB /* AudioDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioDriver.cpp; sourceTree = "<group>"; };
+		0D14CC50128A2B55008589FB /* AudioDriverOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioDriverOSX.cpp; sourceTree = "<group>"; };
+		0D14CC53128A2B55008589FB /* Endian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Endian.cpp; sourceTree = "<group>"; };
+		0D14CC54128A2B55008589FB /* Mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
+		0D14CC55128A2B55008589FB /* Sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sample.cpp; sourceTree = "<group>"; };
+		0D14CC56128A2B55008589FB /* SineSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SineSound.cpp; sourceTree = "<group>"; };
+		0D14CC57128A2B55008589FB /* Sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound.cpp; sourceTree = "<group>"; };
+		0D14CC58128A2B55008589FB /* SoundEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundEffect.cpp; sourceTree = "<group>"; };
+		0D14CC59128A2B55008589FB /* SoundEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundEmitter.cpp; sourceTree = "<group>"; };
+		0D14CC5B128A2B55008589FB /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
+		0D14CC5C128A2B55008589FB /* VorbisSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VorbisSound.cpp; sourceTree = "<group>"; };
+		0D14CC5D128A2B55008589FB /* Wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wav.h; sourceTree = "<group>"; };
+		0D14CC5E128A2B55008589FB /* WavSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WavSound.cpp; sourceTree = "<group>"; };
+		0D14CC83128A2C36008589FB /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		0D14CC87128A2C3D008589FB /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		0D14CCB7128A2D6A008589FB /* DromeAudioPlayerCocoaAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DromeAudioPlayerCocoaAppDelegate.h; sourceTree = "<group>"; };
+		0D14CCB8128A2D6A008589FB /* DromeAudioPlayerCocoaAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DromeAudioPlayerCocoaAppDelegate.mm; sourceTree = "<group>"; };
+		0D14CCBA128A2D6A008589FB /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0D14CCBC128A2D6A008589FB /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0D14CCBD128A2D6A008589FB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0D14CE59128F3C4E008589FB /* CoreAudioSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAudioSound.h; sourceTree = "<group>"; };
+		0D14CE5A128F3C78008589FB /* CoreAudioSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoreAudioSound.cpp; sourceTree = "<group>"; };
+		0D14CE60128F3C9A008589FB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0D14CE9B128F3DCF008589FB /* DromeAudio Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DromeAudio Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D14CE9D128F3DCF008589FB /* DromeAudioPlayerCocoa-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DromeAudioPlayerCocoa-Info.plist"; sourceTree = "<group>"; };
+		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		D2A6134D07B89F6200DD23D3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		D2AAC0C705546C1D00DB518D /* DromeAudio.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = DromeAudio.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D14CE99128F3DCF008589FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D14CEA7128F3E5F008589FB /* DromeAudio.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC0C505546C1D00DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AAC0CC05546C4400DB518D /* Cocoa.framework in Frameworks */,
+				0D14CC84128A2C36008589FB /* CoreAudio.framework in Frameworks */,
+				0D14CC88128A2C3D008589FB /* AudioUnit.framework in Frameworks */,
+				0D14CE61128F3C9A008589FB /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC0C705546C1D00DB518D /* DromeAudio.dylib */,
+				0D14CE9B128F3DCF008589FB /* DromeAudio Player.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* DromeAudio */ = {
+			isa = PBXGroup;
+			children = (
+				0D14CCA6128A2D22008589FB /* examples */,
+				0D14CC4A128A2B55008589FB /* src */,
+				0D14CC34128A2B3E008589FB /* include */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				034768DFFF38A50411DB9C8B /* Products */,
+				0D14CC83128A2C36008589FB /* CoreAudio.framework */,
+				0D14CC87128A2C3D008589FB /* AudioUnit.framework */,
+				0D14CE60128F3C9A008589FB /* AudioToolbox.framework */,
+				0D14CE9D128F3DCF008589FB /* DromeAudioPlayerCocoa-Info.plist */,
+			);
+			name = DromeAudio;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
+				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		0D14CC34128A2B3E008589FB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0D14CC36128A2B3E008589FB /* DromeAudio */,
+			);
+			name = include;
+			path = ../include;
+			sourceTree = SOURCE_ROOT;
+		};
+		0D14CC36128A2B3E008589FB /* DromeAudio */ = {
+			isa = PBXGroup;
+			children = (
+				0D14CE59128F3C4E008589FB /* CoreAudioSound.h */,
+				0D14CC37128A2B3E008589FB /* AudioContext.h */,
+				0D14CC38128A2B3E008589FB /* AudioDriver.h */,
+				0D14CC3A128A2B3E008589FB /* AudioDriverOSX.h */,
+				0D14CC3C128A2B3E008589FB /* DromeAudio */,
+				0D14CC3D128A2B3E008589FB /* Endian.h */,
+				0D14CC3E128A2B3E008589FB /* Exception.h */,
+				0D14CC3F128A2B3E008589FB /* Mutex.h */,
+				0D14CC40128A2B3E008589FB /* Ref.h */,
+				0D14CC41128A2B3E008589FB /* Sample.h */,
+				0D14CC42128A2B3E008589FB /* SineSound.h */,
+				0D14CC43128A2B3E008589FB /* Sound.h */,
+				0D14CC44128A2B3E008589FB /* SoundEffect.h */,
+				0D14CC45128A2B3E008589FB /* SoundEmitter.h */,
+				0D14CC47128A2B3E008589FB /* Util.h */,
+				0D14CC48128A2B3E008589FB /* VorbisSound.h */,
+				0D14CC49128A2B3E008589FB /* WavSound.h */,
+			);
+			path = DromeAudio;
+			sourceTree = "<group>";
+		};
+		0D14CC4A128A2B55008589FB /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0D14CC4C128A2B55008589FB /* DromeAudio */,
+			);
+			name = src;
+			path = ../src;
+			sourceTree = SOURCE_ROOT;
+		};
+		0D14CC4C128A2B55008589FB /* DromeAudio */ = {
+			isa = PBXGroup;
+			children = (
+				0D14CE5A128F3C78008589FB /* CoreAudioSound.cpp */,
+				0D14CC4D128A2B55008589FB /* AudioContext.cpp */,
+				0D14CC4E128A2B55008589FB /* AudioDriver.cpp */,
+				0D14CC50128A2B55008589FB /* AudioDriverOSX.cpp */,
+				0D14CC53128A2B55008589FB /* Endian.cpp */,
+				0D14CC54128A2B55008589FB /* Mutex.cpp */,
+				0D14CC55128A2B55008589FB /* Sample.cpp */,
+				0D14CC56128A2B55008589FB /* SineSound.cpp */,
+				0D14CC57128A2B55008589FB /* Sound.cpp */,
+				0D14CC58128A2B55008589FB /* SoundEffect.cpp */,
+				0D14CC59128A2B55008589FB /* SoundEmitter.cpp */,
+				0D14CC5B128A2B55008589FB /* Util.cpp */,
+				0D14CC5C128A2B55008589FB /* VorbisSound.cpp */,
+				0D14CC5D128A2B55008589FB /* Wav.h */,
+				0D14CC5E128A2B55008589FB /* WavSound.cpp */,
+			);
+			path = DromeAudio;
+			sourceTree = "<group>";
+		};
+		0D14CCA6128A2D22008589FB /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				0D14CCB5128A2D6A008589FB /* DromeAudioPlayerCocoa */,
+			);
+			name = examples;
+			sourceTree = "<group>";
+		};
+		0D14CCB5128A2D6A008589FB /* DromeAudioPlayerCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				0D14CCB7128A2D6A008589FB /* DromeAudioPlayerCocoaAppDelegate.h */,
+				0D14CCB8128A2D6A008589FB /* DromeAudioPlayerCocoaAppDelegate.mm */,
+				0D14CCB9128A2D6A008589FB /* InfoPlist.strings */,
+				0D14CCBB128A2D6A008589FB /* MainMenu.xib */,
+				0D14CCBD128A2D6A008589FB /* main.m */,
+			);
+			name = DromeAudioPlayerCocoa;
+			path = ../examples/DromeAudioPlayerCocoa;
+			sourceTree = SOURCE_ROOT;
+		};
+		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
+				D2A6134D07B89F6200DD23D3 /* CoreData.framework */,
+				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC0C305546C1D00DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D14CC6E128A2B55008589FB /* Wav.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0D14CE9A128F3DCF008589FB /* DromeAudioPlayerCocoa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D14CEA0128F3DD0008589FB /* Build configuration list for PBXNativeTarget "DromeAudioPlayerCocoa" */;
+			buildPhases = (
+				0D14CE97128F3DCF008589FB /* Resources */,
+				0D14CE98128F3DCF008589FB /* Sources */,
+				0D14CE99128F3DCF008589FB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DromeAudioPlayerCocoa;
+			productName = DromeAudioPlayerCocoa;
+			productReference = 0D14CE9B128F3DCF008589FB /* DromeAudio Player.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2AAC0C605546C1D00DB518D /* DromeAudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB917D08733D990010E9CD /* Build configuration list for PBXNativeTarget "DromeAudio" */;
+			buildPhases = (
+				D2AAC0C305546C1D00DB518D /* Headers */,
+				D2AAC0C405546C1D00DB518D /* Sources */,
+				D2AAC0C505546C1D00DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DromeAudio;
+			productName = DromeAudio;
+			productReference = D2AAC0C705546C1D00DB518D /* DromeAudio.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB918108733D990010E9CD /* Build configuration list for PBXProject "DromeAudio" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* DromeAudio */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC0C605546C1D00DB518D /* DromeAudio */,
+				0D14CE9A128F3DCF008589FB /* DromeAudioPlayerCocoa */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D14CE97128F3DCF008589FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D14CEA6128F3E52008589FB /* InfoPlist.strings in Resources */,
+				0D14CEA5128F3E4E008589FB /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D14CE98128F3DCF008589FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D14CEA4128F3E3C008589FB /* DromeAudioPlayerCocoaAppDelegate.mm in Sources */,
+				0D14CEA3128F3E31008589FB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC0C405546C1D00DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D14CC5F128A2B55008589FB /* AudioContext.cpp in Sources */,
+				0D14CC60128A2B55008589FB /* AudioDriver.cpp in Sources */,
+				0D14CC62128A2B55008589FB /* AudioDriverOSX.cpp in Sources */,
+				0D14CC64128A2B55008589FB /* Endian.cpp in Sources */,
+				0D14CC65128A2B55008589FB /* Mutex.cpp in Sources */,
+				0D14CC66128A2B55008589FB /* Sample.cpp in Sources */,
+				0D14CC67128A2B55008589FB /* SineSound.cpp in Sources */,
+				0D14CC68128A2B55008589FB /* Sound.cpp in Sources */,
+				0D14CC69128A2B55008589FB /* SoundEffect.cpp in Sources */,
+				0D14CC6A128A2B55008589FB /* SoundEmitter.cpp in Sources */,
+				0D14CC6C128A2B55008589FB /* Util.cpp in Sources */,
+				0D14CC6F128A2B55008589FB /* WavSound.cpp in Sources */,
+				0D14CE5B128F3C78008589FB /* CoreAudioSound.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0D14CCB9128A2D6A008589FB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D14CCBA128A2D6A008589FB /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0D14CCBB128A2D6A008589FB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D14CCBC128A2D6A008589FB /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0D14CE9E128F3DD0008589FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "DromeAudioPlayerCocoa-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "DromeAudio Player";
+			};
+			name = Debug;
+		};
+		0D14CE9F128F3DD0008589FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "DromeAudioPlayerCocoa-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "DromeAudio Player";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		1DEB917E08733D990010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = DromeAudio;
+			};
+			name = Debug;
+		};
+		1DEB917F08733D990010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = DromeAudio;
+			};
+			name = Release;
+		};
+		1DEB918208733D990010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = WITH_OSX;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../include;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB918308733D990010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = WITH_OSX;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../include;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D14CEA0128F3DD0008589FB /* Build configuration list for PBXNativeTarget "DromeAudioPlayerCocoa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D14CE9E128F3DD0008589FB /* Debug */,
+				0D14CE9F128F3DD0008589FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB917D08733D990010E9CD /* Build configuration list for PBXNativeTarget "DromeAudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB917E08733D990010E9CD /* Debug */,
+				1DEB917F08733D990010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB918108733D990010E9CD /* Build configuration list for PBXProject "DromeAudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB918208733D990010E9CD /* Debug */,
+				1DEB918308733D990010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}

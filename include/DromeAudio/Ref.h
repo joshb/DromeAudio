@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 Josh A. Beam <josh@joshbeam.com>
+ * Copyright (C) 2008 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,14 +35,14 @@ namespace DromeAudio {
 class RefClass
 {
 	protected:
-		int m_refCount;
+		int m_RefCount;
 
 	public:
-		RefClass() { m_refCount = 0; }
+		RefClass() { m_RefCount = 0; }
 		virtual ~RefClass() { }
 
-		inline void ref() { ++m_refCount; }
-		inline void unref() { if(--m_refCount == 0) delete this; }
+		inline void Ref() { ++m_RefCount; }
+		inline void Unref() { if(--m_RefCount == 0) delete this; }
 };
 
 /** \brief Smart pointer class template for classes that derive from RefClass.
@@ -61,19 +61,19 @@ template <typename T> class RefPtr
 		{
 			ptr = arg.ptr;
 			if(ptr)
-				ptr->ref();
+				ptr->Ref();
 		}
 
 		RefPtr(T *arg)
 		{
 			ptr = arg;
 			if(ptr)
-				ptr->ref();
+				ptr->Ref();
 		}
 
-		virtual ~RefPtr() { if(ptr) ptr->unref(); }
+		virtual ~RefPtr() { if(ptr) ptr->Unref(); }
 
-		inline bool isSet() const { return (ptr != 0); }
+		inline bool IsSet() const { return (ptr != 0); }
 
 		// operators
 		inline T * operator -> () { return ptr; }
@@ -84,28 +84,28 @@ template <typename T> class RefPtr
 		inline void operator = (RefPtr <T> arg)
 		{
 			if(ptr)
-				ptr->unref();
+				ptr->Unref();
 			ptr = arg.ptr;
 			if(ptr)
-				ptr->ref();
+				ptr->Ref();
 		}
 
 		inline void operator = (T *arg)
 		{
 			if(ptr)
-				ptr->unref();
+				ptr->Unref();
 			ptr = arg;
 			if(ptr)
-				ptr->ref();
+				ptr->Ref();
 		}
 
 		inline void operator = (T &arg)
 		{
 			if(ptr)
-				ptr->unref();
+				ptr->Unref();
 			ptr = &arg;
 			if(ptr)
-				ptr->ref();
+				ptr->Ref();
 		}
 
 		inline bool operator == (const RefPtr <T> &arg) const

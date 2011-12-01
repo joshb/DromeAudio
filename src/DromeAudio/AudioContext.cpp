@@ -23,36 +23,81 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_SINESOUND_H__
-#define __DROMEAUDIO_SINESOUND_H__
-
-#include <DromeAudio/Sound.h>
+#include <cstdio>
+#include <DromeAudio/AudioContext.h>
 
 namespace DromeAudio {
 
-class SineSound;
-typedef RefPtr <SineSound> SineSoundPtr;
-
-class SineSound : public Sound
+/*
+ * AudioContext class
+ */
+AudioContext::AudioContext(unsigned int targetSampleRate)
 {
-	protected:
-		float m_frequency;
+	m_mutex = Mutex::create();
+	m_targetSampleRate = targetSampleRate;
+}
 
-		SineSound(float frequency);
+AudioContext::~AudioContext()
+{
+	delete m_mutex;
+}
 
-	public:
-		unsigned char getNumChannels() const;
-		unsigned int getSampleRate() const;
-		unsigned int getNumSamples() const;
+unsigned int
+AudioContext::getTargetSampleRate() const
+{
+	return m_targetSampleRate;
+}
 
-		float getFrequency() const;
-		void setFrequency(float value);
+void
+AudioContext::attachSoundEmitter(SoundEmitterPtr emitter)
+{
+	m_mutex->lock();
+	m_emitters.insert(m_emitters.end(), emitter);
+	m_mutex->unlock();
+}
 
-		Sample getSample(unsigned int index) const;
+void
+AudioContext::detachSoundEmitter(SoundEmitterPtr emitter)
+{
+	m_mutex->lock();
 
-		static SineSoundPtr create(float frequency);
-};
+	for(unsigned int i = 0; i < m_emitters.size(); i++) {
+		if(m_emitters[i] == emitter) {
+			m_emitters.erase(m_emitters.begin() + i);
+			break;
+		}
+	}
+
+	m_mutex->unlock();
+}
+
+SoundEmitterPtr
+AudioContext::playSound(SoundPtr sound)
+{
+	SoundEmitterPtr emitter = SoundEmitter::create(m_targetSampleRate);
+	emitter->setSound(sound);
+
+	attachSoundEmitter(emitter);
+	return emitter;
+}
+
+void
+AudioContext::writeSamples(AudioDriver *driver, unsigned int numSamples)
+{
+	m_mutex->lock();
+
+	for(unsigned int i = 0; i < numSamples; i++) {
+		Sample sample;
+
+		// mix samples from all emitters
+		for(unsigned int j = 0; j < m_emitters.size(); j++)
+			sample += m_emitters[j]->getNextSample();
+
+		// write sample data
+		driver->writeSample(sample.clamp());
+	}
+
+	m_mutex->unlock();
+}
 
 } // namespace DromeAudio
-
-#endif /* __DROMEAUDIO_SINESOUND_H__ */
