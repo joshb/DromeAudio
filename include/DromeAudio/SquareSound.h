@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 Josh A. Beam
+ * Copyright (C) 2008-2012 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,22 +23,22 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_SINESOUND_H__
-#define __DROMEAUDIO_SINESOUND_H__
+#ifndef __DROMEAUDIO_SQUARESOUND_H__
+#define __DROMEAUDIO_SQUARESOUND_H__
 
 #include <DromeAudio/Sound.h>
 
 namespace DromeAudio {
 
-class SineSound;
-typedef RefPtr <SineSound> SineSoundPtr;
+class SquareSound;
+typedef RefPtr <SquareSound> SquareSoundPtr;
 
-class SineSound : public Sound
+class SquareSound : public Sound
 {
 	protected:
 		float m_frequency;
 
-		SineSound(float frequency);
+		SquareSound(float frequency);
 
 	public:
 		unsigned int getNumSamples() const;
@@ -50,9 +50,9 @@ class SineSound : public Sound
 
 		Sample getSample(unsigned int index) const;
 
-		static SineSoundPtr create(float frequency);
+		static SquareSoundPtr create(float frequency);
 };
 
 } // namespace DromeAudio
 
-#endif /* __DROMEAUDIO_SINESOUND_H__ */
+#endif /* __DROMEAUDIO_SQUARESOUND_H__ */

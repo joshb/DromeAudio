@@ -26,6 +26,7 @@
 #ifndef __DROMEAUDIO_SOUND_H__
 #define __DROMEAUDIO_SOUND_H__
 
+#include <string>
 #include <DromeAudio/Ref.h>
 #include <DromeAudio/Endian.h>
 #include <DromeAudio/Sample.h>
@@ -53,17 +54,17 @@ class Sound : public RefClass
 		/**
 		 * @return The number of audio channels that the sound consists of.
 		 */
-		virtual unsigned char getNumChannels() const = 0;
+		virtual unsigned char getNumChannels() const;
 
 		/**
 		 * @return The sample rate (number of samples per second of audio) of the sound.
 		 */
-		virtual unsigned int getSampleRate() const = 0;
+		virtual unsigned int getSampleRate() const;
 
 		/**
 		 * @return The total number of samples that the sound consists of. May be 0 to indicate an unlimited number of samples.
 		 */
-		virtual unsigned int getNumSamples() const = 0;
+		virtual unsigned int getNumSamples() const;
 
 		/**
 		 * Retrieves one sample of audio data from the sound.
@@ -71,6 +72,9 @@ class Sound : public RefClass
 		 * @return The Sample at the specified index.
 		 */
 		virtual Sample getSample(unsigned int index) const = 0;
+
+		virtual void setParameter(const std::string &name, float value);
+		virtual void setParameter(const std::string &name, SoundPtr value);
 
 		/**
 		 * Saves the sound to a WAV file.

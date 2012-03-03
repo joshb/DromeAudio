@@ -36,22 +36,19 @@ SineSound::SineSound(float frequency)
 	setFrequency(frequency);
 }
 
-unsigned char
-SineSound::getNumChannels() const
-{
-	return 1;
-}
-
-unsigned int
-SineSound::getSampleRate() const
-{
-	return 44100;
-}
-
 unsigned int
 SineSound::getNumSamples() const
 {
 	return (unsigned int)((float)getSampleRate() / m_frequency);
+}
+
+void
+SineSound::setParameter(const std::string &name, float value)
+{
+	if(name == "frequency")
+		setFrequency(value);
+	else
+		Sound::setParameter(name, value);
 }
 
 float

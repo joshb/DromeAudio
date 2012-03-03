@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 Josh A. Beam
+ * Copyright (C) 2008-2012 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,36 +23,62 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_SINESOUND_H__
-#define __DROMEAUDIO_SINESOUND_H__
-
-#include <DromeAudio/Sound.h>
+#include <cmath>
+#include <DromeAudio/SquareSound.h>
 
 namespace DromeAudio {
 
-class SineSound;
-typedef RefPtr <SineSound> SineSoundPtr;
-
-class SineSound : public Sound
+/*
+ * SquareSound class
+ */
+SquareSound::SquareSound(float frequency)
 {
-	protected:
-		float m_frequency;
+	setFrequency(frequency);
+}
 
-		SineSound(float frequency);
+unsigned int
+SquareSound::getNumSamples() const
+{
+	return (unsigned int)((float)getSampleRate() / m_frequency);
+}
 
-	public:
-		unsigned int getNumSamples() const;
+void
+SquareSound::setParameter(const std::string &name, float value)
+{
+	if(name == "frequency")
+		setFrequency(value);
+	else
+		Sound::setParameter(name, value);
+}
 
-		void setParameter(const std::string &name, float value);
+float
+SquareSound::getFrequency() const
+{
+	return m_frequency;
+}
 
-		float getFrequency() const;
-		void setFrequency(float value);
+void
+SquareSound::setFrequency(float value)
+{
+	m_frequency = value;
+}
 
-		Sample getSample(unsigned int index) const;
+Sample
+SquareSound::getSample(unsigned int index) const
+{
+	float f = (index < getNumSamples() / 2) ? 1.0f : -1.0f;
 
-		static SineSoundPtr create(float frequency);
-};
+	Sample sample;
+	sample[0] = f;
+	sample[1] = f;
+
+	return sample;
+}
+
+SquareSoundPtr
+SquareSound::create(float frequency)
+{
+	return SquareSoundPtr(new SquareSound(frequency));
+}
 
 } // namespace DromeAudio
-
-#endif /* __DROMEAUDIO_SINESOUND_H__ */

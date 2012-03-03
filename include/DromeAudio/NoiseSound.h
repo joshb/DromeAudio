@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 Josh A. Beam
+ * Copyright (C) 2008-2012 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -17,42 +17,33 @@
  * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * OR BUNOISESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
  * WHETHER IN CONTACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DROMEAUDIO_SINESOUND_H__
-#define __DROMEAUDIO_SINESOUND_H__
+#ifndef __DROMEAUDIO_NOISESOUND_H__
+#define __DROMEAUDIO_NOISESOUND_H__
 
 #include <DromeAudio/Sound.h>
 
 namespace DromeAudio {
 
-class SineSound;
-typedef RefPtr <SineSound> SineSoundPtr;
+class NoiseSound;
+typedef RefPtr <NoiseSound> NoiseSoundPtr;
 
-class SineSound : public Sound
+class NoiseSound : public Sound
 {
 	protected:
-		float m_frequency;
-
-		SineSound(float frequency);
+		NoiseSound();
 
 	public:
-		unsigned int getNumSamples() const;
-
-		void setParameter(const std::string &name, float value);
-
-		float getFrequency() const;
-		void setFrequency(float value);
-
 		Sample getSample(unsigned int index) const;
 
-		static SineSoundPtr create(float frequency);
+		static NoiseSoundPtr create();
 };
 
 } // namespace DromeAudio
 
-#endif /* __DROMEAUDIO_SINESOUND_H__ */
+#endif /* __DROMEAUDIO_NOISESOUND_H__ */

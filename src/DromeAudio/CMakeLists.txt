@@ -4,11 +4,14 @@ set(
 	AudioDriver.cpp
 	Endian.cpp
 	Mutex.cpp
+	NoiseSound.cpp
 	Sample.cpp
+	SawSound.cpp
 	SineSound.cpp
 	Sound.cpp
 	SoundEffect.cpp
 	SoundEmitter.cpp
+	SquareSound.cpp
 	Util.cpp
 	WavSound.cpp
 )

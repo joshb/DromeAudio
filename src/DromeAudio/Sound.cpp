@@ -37,6 +37,8 @@
 #include <DromeAudio/Util.h>
 #include "Wav.h"
 
+using namespace std;
+
 namespace DromeAudio {
 
 /*
@@ -44,6 +46,36 @@ namespace DromeAudio {
  */
 Sound::Sound()
 {
+}
+
+unsigned char
+Sound::getNumChannels() const
+{
+	return 1;
+}
+
+unsigned int
+Sound::getSampleRate() const
+{
+	return 44100;
+}
+
+unsigned int
+Sound::getNumSamples() const
+{
+	return 0;
+}
+
+void
+Sound::setParameter(const string &name, float value)
+{
+	throw Exception("No such parameter");
+}
+
+void
+Sound::setParameter(const string &name, SoundPtr value)
+{
+	throw Exception("No such parameter");
 }
 
 void
