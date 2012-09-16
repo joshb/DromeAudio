@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 Josh A. Beam
+ * Copyright (C) 2010-2012 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 #include <DromeAudio/Endian.h>
 #include <DromeAudio/AudioContext.h>
 #include <DromeAudio/AudioDriverOSX.h>
-#include <CoreServices/CoreServices.h>
 
 namespace DromeAudio
 {
@@ -66,28 +65,28 @@ AudioDriverOSX::AudioDriverOSX()
 	m_sampleIndex = 0;
 	m_numSamples = 0;
 
-	// create ComponentDescription
-	ComponentDescription desc;
+	// create AudioComponentDescription
+	AudioComponentDescription desc;
 	desc.componentType = kAudioUnitType_Output;
 	desc.componentSubType = kAudioUnitSubType_DefaultOutput;
 	desc.componentManufacturer = kAudioUnitManufacturer_Apple;
 	desc.componentFlags = 0;
 	desc.componentFlagsMask = 0;
 
-	// get Component
-	Component component = FindNextComponent(NULL, &desc);
+	// get AudioComponent
+	AudioComponent component = AudioComponentFindNext(NULL, &desc);
 	if(!component)
-		throw Exception("AudioDriverOSX::AudioDriverOSX(): FindNextComponent failed");
+		throw Exception("AudioDriverOSX::AudioDriverOSX(): AudioComponentFindNext failed");
 
-	// open AudioUnit
-	if(OpenAComponent(component, &m_outputUnit) != noErr)
-		throw Exception("AudioDriverOSX::AudioDriverOSX(): OpenAComponent failed");
+	// create AudioComponent instance
+	if(AudioComponentInstanceNew(component, &m_outputInstance) != noErr)
+		throw Exception("AudioDriverOSX::AudioDriverOSX(): AudioComponentInstanceNew failed");
 
 	// configure callback
 	AURenderCallbackStruct callback;
 	callback.inputProc = osxRenderCallback;
 	callback.inputProcRefCon = this;
-	OSStatus result = AudioUnitSetProperty(m_outputUnit,
+	OSStatus result = AudioUnitSetProperty(m_outputInstance,
 	                                       kAudioUnitProperty_SetRenderCallback,
 	                                       kAudioUnitScope_Global,
 	                                       0,
@@ -106,7 +105,7 @@ AudioDriverOSX::AudioDriverOSX()
 	streamDesc.mBytesPerFrame = streamDesc.mChannelsPerFrame * (streamDesc.mBitsPerChannel / 8);
 	streamDesc.mFramesPerPacket = 1;
 	streamDesc.mBytesPerPacket = streamDesc.mBytesPerFrame * streamDesc.mFramesPerPacket;
-	result = AudioUnitSetProperty(m_outputUnit,
+	result = AudioUnitSetProperty(m_outputInstance,
 	                              kAudioUnitProperty_StreamFormat,
 	                              kAudioUnitScope_Global,
 	                              0,
@@ -116,11 +115,11 @@ AudioDriverOSX::AudioDriverOSX()
 		throw Exception("AudioDriverOSX::AudioDriverOSX(): AudioUnitSetProperty (for StreamFormat) failed");
 
 	// initialize AudioUnit
-	if(AudioUnitInitialize(m_outputUnit) != noErr)
+	if(AudioUnitInitialize(m_outputInstance) != noErr)
 		throw Exception("AudioDriverOSX::AudioDriverOSX(): AudioUnitInitialize failed");
 
 	// start output
-	if(AudioOutputUnitStart(m_outputUnit) != noErr)
+	if(AudioOutputUnitStart(m_outputInstance) != noErr)
 		throw Exception("AudioDriverOSX::AudioDriverOSX(): AudioOutputUnitStart failed");
 
 	// create thread to call runLoop
@@ -137,11 +136,11 @@ AudioDriverOSX::~AudioDriverOSX()
 		throw Exception("AudioDriverOSX::~AudioDriverOSX(): pthread_join failed");
 
 	// stop output
-	if(AudioOutputUnitStop(m_outputUnit) != noErr)
+	if(AudioOutputUnitStop(m_outputInstance) != noErr)
 		throw Exception("AudioDriverOSX::~AudioDriverOSX(): AudioOutputUnitStop failed");
 
 	// uninitialize AudioUnit
-	if(AudioUnitUninitialize(m_outputUnit) != noErr)
+	if(AudioUnitUninitialize(m_outputInstance) != noErr)
 		throw Exception("AudioDriverOSX::~AudioDriverOSX(): AudioUnitUninitialize failed");
 }
 

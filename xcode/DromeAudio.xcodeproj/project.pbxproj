@@ -20,15 +20,14 @@
 		0D14CC6C128A2B55008589FB /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC5B128A2B55008589FB /* Util.cpp */; };
 		0D14CC6E128A2B55008589FB /* Wav.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D14CC5D128A2B55008589FB /* Wav.h */; };
 		0D14CC6F128A2B55008589FB /* WavSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CC5E128A2B55008589FB /* WavSound.cpp */; };
-		0D14CC84128A2C36008589FB /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D14CC83128A2C36008589FB /* CoreAudio.framework */; };
-		0D14CC88128A2C3D008589FB /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D14CC87128A2C3D008589FB /* AudioUnit.framework */; };
 		0D14CE5B128F3C78008589FB /* CoreAudioSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CE5A128F3C78008589FB /* CoreAudioSound.cpp */; };
-		0D14CE61128F3C9A008589FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D14CE60128F3C9A008589FB /* AudioToolbox.framework */; };
 		0D14CEA3128F3E31008589FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CCBD128A2D6A008589FB /* main.m */; };
 		0D14CEA4128F3E3C008589FB /* DromeAudioPlayerCocoaAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D14CCB8128A2D6A008589FB /* DromeAudioPlayerCocoaAppDelegate.mm */; };
 		0D14CEA5128F3E4E008589FB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D14CCBB128A2D6A008589FB /* MainMenu.xib */; };
 		0D14CEA6128F3E52008589FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D14CCB9128A2D6A008589FB /* InfoPlist.strings */; };
 		0D14CEA7128F3E5F008589FB /* DromeAudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC0C705546C1D00DB518D /* DromeAudio.dylib */; };
+		0DFAEB621605A0ED008E3C18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFAEB611605A0ED008E3C18 /* AudioToolbox.framework */; };
+		0DFAEB641605A0FA008E3C18 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFAEB631605A0FA008E3C18 /* AudioUnit.framework */; };
 		D2AAC0CC05546C4400DB518D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +64,6 @@
 		0D14CC5C128A2B55008589FB /* VorbisSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VorbisSound.cpp; sourceTree = "<group>"; };
 		0D14CC5D128A2B55008589FB /* Wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wav.h; sourceTree = "<group>"; };
 		0D14CC5E128A2B55008589FB /* WavSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WavSound.cpp; sourceTree = "<group>"; };
-		0D14CC83128A2C36008589FB /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		0D14CC87128A2C3D008589FB /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		0D14CCB7128A2D6A008589FB /* DromeAudioPlayerCocoaAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DromeAudioPlayerCocoaAppDelegate.h; sourceTree = "<group>"; };
 		0D14CCB8128A2D6A008589FB /* DromeAudioPlayerCocoaAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DromeAudioPlayerCocoaAppDelegate.mm; sourceTree = "<group>"; };
 		0D14CCBA128A2D6A008589FB /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -74,9 +71,10 @@
 		0D14CCBD128A2D6A008589FB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D14CE59128F3C4E008589FB /* CoreAudioSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAudioSound.h; sourceTree = "<group>"; };
 		0D14CE5A128F3C78008589FB /* CoreAudioSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoreAudioSound.cpp; sourceTree = "<group>"; };
-		0D14CE60128F3C9A008589FB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0D14CE9B128F3DCF008589FB /* DromeAudio Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DromeAudio Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D14CE9D128F3DCF008589FB /* DromeAudioPlayerCocoa-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DromeAudioPlayerCocoa-Info.plist"; sourceTree = "<group>"; };
+		0DFAEB611605A0ED008E3C18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0DFAEB631605A0FA008E3C18 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		D2A6134D07B89F6200DD23D3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		D2AAC0C705546C1D00DB518D /* DromeAudio.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = DromeAudio.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,10 +93,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DFAEB641605A0FA008E3C18 /* AudioUnit.framework in Frameworks */,
+				0DFAEB621605A0ED008E3C18 /* AudioToolbox.framework in Frameworks */,
 				D2AAC0CC05546C4400DB518D /* Cocoa.framework in Frameworks */,
-				0D14CC84128A2C36008589FB /* CoreAudio.framework in Frameworks */,
-				0D14CC88128A2C3D008589FB /* AudioUnit.framework in Frameworks */,
-				0D14CE61128F3C9A008589FB /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,15 +114,14 @@
 		0867D691FE84028FC02AAC07 /* DromeAudio */ = {
 			isa = PBXGroup;
 			children = (
+				0DFAEB631605A0FA008E3C18 /* AudioUnit.framework */,
+				0DFAEB611605A0ED008E3C18 /* AudioToolbox.framework */,
 				0D14CCA6128A2D22008589FB /* examples */,
 				0D14CC4A128A2B55008589FB /* src */,
 				0D14CC34128A2B3E008589FB /* include */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
-				0D14CC83128A2C36008589FB /* CoreAudio.framework */,
-				0D14CC87128A2C3D008589FB /* AudioUnit.framework */,
-				0D14CE60128F3C9A008589FB /* AudioToolbox.framework */,
 				0D14CE9D128F3DCF008589FB /* DromeAudioPlayerCocoa-Info.plist */,
 			);
 			name = DromeAudio;
@@ -305,7 +301,11 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB918108733D990010E9CD /* Build configuration list for PBXProject "DromeAudio" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* DromeAudio */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -474,7 +474,7 @@
 				HEADER_SEARCH_PATHS = ../include;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -488,7 +488,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../include;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 Josh A. Beam
+ * Copyright (C) 2010-2012 Josh A. Beam
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,7 @@ namespace DromeAudio {
 class AudioDriverOSX : public AudioDriver
 {
 	protected:
-		AudioUnit m_outputUnit;
+		AudioComponentInstance m_outputInstance;
 		pthread_t m_thread;
 		bool m_running;
 
