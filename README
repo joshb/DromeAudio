@@ -1,5 +1,4 @@
-DromeAudio 0.2.1
-(Last updated: November 14, 2010)
+DromeAudio
 
 ABOUT
 -----
@@ -8,12 +7,8 @@ written in C++. It features a simple API for loading, generating,
 processing, and playing audio.
 
 DromeAudio was written by Josh Beam <josh@joshbeam.com> and is distributed
-under a BSD-style license. The latest version can be found at:
-
-	http://joshbeam.com/software/dromeaudio/
-
-There is NO WARRANTY for this software. See the 'COPYING' file
-included with DromeAudio for more information.
+under a BSD-style license. There is NO WARRANTY for this software. See the
+'COPYING' file included with DromeAudio for more information.
 
 FEATURES
 --------
